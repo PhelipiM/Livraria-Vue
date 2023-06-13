@@ -17,8 +17,8 @@ const router = createRouter({
       component: CategoriaView,
     },
     {
-      path: '/autoras',
-      name: 'autoras',
+      path: '/autores',
+      name: 'autores',
       component: AutorView,
     },
   ],

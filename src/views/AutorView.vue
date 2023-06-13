@@ -9,7 +9,7 @@ export default {
     };
   },
   async created() {
-    this.autores = await autoresApi.buscarTodasAsAutores();
+    this.autores = await autoresApi.buscarTodosOsAutores();
   },
   methods: {
     async salvar() {
@@ -19,14 +19,14 @@ export default {
         await autoresApi.adicionarAutor(this.autor);
       }
       this.autor = {};
-      this.autores = await autoresApi.buscarTodasAsAutores();
+      this.autores = await autoresApi.buscarTodosOsAutores();
     },
     editar(autor) {
       Object.assign(this.autor, autor);
     },
     async excluir(autor) {
       await autoresApi.excluirAutor(autor.id);
-      this.autores = await autoresApi.buscarTodasAsAutores();
+      this.autores = await autoresApi.buscarTodosOsAutores();
     },
   },
 };
@@ -36,14 +36,14 @@ export default {
   <h1>Autor</h1>
   <hr />
   <div class="form">
-    <input type="text" v-model="autor.descricao" placeholder="Descrição" />
+    <input type="text" v-model="autor.nome" placeholder="Descrição" />
     <button @click="salvar">Salvar</button>
   </div>
   <hr />
   <ul>
     <li v-for="autor in autores" :key="autor.id">
       <span @click="editar(autor)">
-        ({{ autor.id }}) - {{ autor.descricao }} -
+        ({{ autor.id }}) - {{ autor.nome }} -
       </span>
       <button @click="excluir(autor)">X</button>
     </li>
